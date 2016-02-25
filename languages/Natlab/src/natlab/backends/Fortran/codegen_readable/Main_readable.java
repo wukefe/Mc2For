@@ -83,6 +83,7 @@ public class Main_readable {
 		        		.getTIRToMcSAFIRWithoutTemp().getTransformedTree();
 		        Set<String> remainingVars = analysisEngine
 		        		.getTemporaryVariablesRemovalAnalysis().getRemainingVariablesNames();
+                
 		        System.err.println("\ntamer plus analysis result: \n" 
 		        		+ fTree.getPrettyPrinted() + "\n");
 		        if (Debug) System.err.println("remaining variables: \n"+remainingVars);
@@ -146,7 +147,7 @@ public class Main_readable {
 		        	}
 		        }
 				
-				
+                System.out.println("--------------------\n");
 		        System.err.println("pretty print the generated Fortran code:");
 		        System.out.println(output);
 		        
@@ -223,8 +224,11 @@ public class Main_readable {
 		        		.getTIRToMcSAFIRWithoutTemp().getTransformedTree();
 		        Set<String> remainingVars = analysisEngine
 		        		.getTemporaryVariablesRemovalAnalysis().getRemainingVariablesNames();
-		        System.err.println("\ntamer plus analysis result: \n" 
+		        
+                if (options.pretty()) {
+                    System.err.println("\ntamer plus analysis result: \n" 
 		        		+ fTree.getPrettyPrinted() + "\n");
+                }
 		        if (Debug) System.err.println("remaining variables: \n"+remainingVars);
 		        
 		        /*
@@ -292,8 +296,11 @@ public class Main_readable {
 		        else {
 		        	System.err.println("***with run-time ABC code***");
 		        }
-		        System.err.println("pretty print the generated Fortran code:");
-		        System.out.println(output);
+
+                if (options.pretty()) {
+		            System.err.println("pretty print the generated Fortran code:");
+		            System.out.println(output);
+                }
 				
                 String finalpath = "";
                 if (options.od().equals("")) {
